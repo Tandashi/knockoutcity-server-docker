@@ -1,22 +1,7 @@
 #!/bin/sh
 
-KOC_SERVER_FILE_PATH=/data/KnockoutCityServer
-
-if [[ -d "$KOC_SERVER_FILE_PATH" && "${KOC_FORCE_SERVER_DOWNLOAD:-false}" == false ]]; then
-  echo "Server files already downloaded. Skipping download..."
-else
-  if [[ -z "$KOC_SERVER_DONWLOAD_URL" ]]; then
-    echo "No Server Download Url provided. Can't download..."
-    exit 1
-  fi
-
-  mkdir -p /data
-  cd /data || exit 1
-
-  wget "$KOC_SERVER_DONWLOAD_URL" -O KnockoutCity-Server.zip
-  unzip KnockoutCity-Server.zip
-  rm KnockoutCity-Server.zip
-fi
+KOC_SERVER_FILE_ROOT_PATH=/data
+KOC_SERVER_FILE_PATH=$KOC_SERVER_FILE_ROOT_PATH/KnockoutCityServer
 
 echo ""
 echo "--------------------------------------------------------"
